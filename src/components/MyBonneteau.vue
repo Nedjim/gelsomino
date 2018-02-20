@@ -48,6 +48,10 @@ export default {
         });
     },
     finishGame(endGameStatus) {
+      if (this.status != PLAYING) {
+        return;
+      }
+
       this.status = ENDGAME;
       this.endGameStatus = endGameStatus;
     }
