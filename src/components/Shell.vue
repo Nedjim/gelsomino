@@ -1,7 +1,7 @@
 <template>
   <div>
     <img @click="select" v-show="!displayPerl" class="shell-img" src="/static/shell.png" alt="">
-    <img v-show="displayPerl" class="perl-img" src="/static/pearl.jpeg" alt="">
+    <img v-show="displayPerl" class="pearl-img" src="/static/pearl.jpeg" alt="">
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
 .shell-img {
   width: 100%;
 }
-.perl-img {
+.pearl-img {
   width: 100%;
 }
 .shell-container {
