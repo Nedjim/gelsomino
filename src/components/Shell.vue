@@ -8,15 +8,10 @@
 <script>
 export default {
   name: 'Shell',
-  props: ['id', 'hasPearl'],
-  data () {
-    return {
-      displayShell: true
-    };
-  },
+  props: ['id', 'hasPearl', 'displayShell'],
   methods: {
     select() {
-      this.displayShell = false;
+      this.$emit('display', this.id);
 
       if (this.hasPearl) {
         this.$emit('endGame', 'win');

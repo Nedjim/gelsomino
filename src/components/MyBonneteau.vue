@@ -6,9 +6,13 @@
 
     <div id="shells">
       <div v-for="shell in shells" :key="shell.id" class="shell">
-        <shell @endGame="finishGame(...arguments)"
+        <shell
+          @display="display(...arguments)"
+          @endGame="finishGame(...arguments)"
           :id="shell.id"
-          :has-pearl="shell.id === perlPosition">
+          :has-pearl="shell.id === perlPosition"
+          :display-shell="shell.displayShell"
+        >
         </shell>
       </div>
     </div>
@@ -33,9 +37,9 @@ export default {
     return {
       perlPosition: 0,
       shells: [
-        { id: 0 },
-        { id: 1 },
-        { id: 2 },
+        { id: 0, displayShell: true },
+        { id: 1, displayShell: true },
+        { id: 2, displayShell: true },
       ],
       status: PLAYING,
       endGameStatus: ''
@@ -62,6 +66,13 @@ export default {
     tryAgain() {
       this.status = PLAYING;
       this.shuffle();
+    },
+    display(id) {
+      this.shells.forEach((shell) => {
+        if (shell.id === id) {
+          shell.displayShell = false;
+        }
+      });
     }
   },
   computed: {
