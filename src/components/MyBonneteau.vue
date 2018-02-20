@@ -6,7 +6,10 @@
 
     <div id="shells">
       <div v-for="shell in shells" :key="shell.id" class="shell">
-        <shell @endGame="finishGame(...arguments)" :id="shell.id" :has-perl="shell.id === perlPosition"></shell>
+        <shell @endGame="finishGame(...arguments)"
+          :id="shell.id"
+          :has-pearl="shell.id === perlPosition">
+        </shell>
       </div>
     </div>
 

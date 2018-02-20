@@ -9,7 +9,7 @@
 
 export default {
   name: 'Shell',
-  props: ['id', 'hasPerl'],
+  props: ['id', 'hasPearl'],
   data () {
     return {
       displayShell: true,
@@ -20,7 +20,7 @@ export default {
     select() {
       this.displayShell = false;
 
-      if (this.hasPerl) {
+      if (this.hasPearl) {
         this.displayPearl = true;
         this.$emit('endGame', 'win');
         return;
