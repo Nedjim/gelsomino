@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="status" class="msg">
+    <div v-show="status" :class="{win: isWin, lost: isLost}" class="msg">
       {{ status }}
     </div>
     <div id="shells">
@@ -46,6 +46,14 @@ export default {
       this.status = status;
     }
   },
+  computed: {
+    isLost() {
+      return this.status === 'lost';
+    },
+    isWin() {
+      return this.status === 'win';
+    }
+  },
   components: { Shell }
 }
 </script>
@@ -61,6 +69,11 @@ export default {
 .msg {
   width: 100%;
   height: 150px;
+}
+.win {
+  background-color: green;
+}
+.lost {
   background-color: red;
 }
 </style>
