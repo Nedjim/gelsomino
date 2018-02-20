@@ -1,8 +1,9 @@
 <template>
   <div>
     <div v-show="status" :class="{win: isWin, lost: isLost}" class="msg">
-      {{ status }}
+      {{ endGameMsg }}
     </div>
+
     <div id="shells">
       <div v-for="shell in shells" :key="shell.id" class="shell">
         <shell @endGame="finishGame(...arguments)" :id="shell.id" :has-perl="shell.id == perlPosition"></shell>
@@ -14,6 +15,9 @@
 <script>
 import axios from 'axios';
 import Shell from './Shell.vue';
+
+const PLAYING = 0;
+const ENDGAME = 1;
 
 export default {
   name: 'MyBonneteau',
@@ -28,7 +32,8 @@ export default {
         { id: 1 },
         { id: 2 },
       ],
-      status: ''
+      status: PLAYING,
+      endGameStatus: ''
     };
   },
   methods: {
@@ -42,16 +47,23 @@ export default {
           console.error(error);
         });
     },
-    finishGame(status) {
-      this.status = status;
+    finishGame(endGameStatus) {
+      this.status = ENDGAME;
+      this.endGameStatus = endGameStatus;
     }
   },
   computed: {
+    isEndGame() {
+      return this.status === ENDGAME;
+    },
     isLost() {
-      return this.status === 'lost';
+      return this.isEndGame && this.endGameStatus === 'lost';
     },
     isWin() {
-      return this.status === 'win';
+      return this.isEndGame && this.endGameStatus === 'win';
+    },
+    endGameMsg() {
+      return this.isLost ? 'LOST :(' : 'WIN !!!!!!!';
     }
   },
   components: { Shell }

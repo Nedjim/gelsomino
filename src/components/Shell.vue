@@ -6,13 +6,14 @@
 </template>
 
 <script>
+
 export default {
   name: 'Shell',
   props: ['id', 'hasPerl'],
   data () {
     return {
       displayPerl: false
-    }
+    };
   },
   methods: {
     select() {
