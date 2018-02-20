@@ -63,9 +63,15 @@ export default {
       this.status = ENDGAME;
       this.endGameStatus = endGameStatus;
     },
+    displayAllShells() {
+      this.shells.forEach((shell) => {
+        shell.displayShell = true;
+      });
+    },
     tryAgain() {
       this.status = PLAYING;
       this.shuffle();
+      this.displayAllShells();
     },
     display(id) {
       this.shells.forEach((shell) => {
