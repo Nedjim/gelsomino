@@ -6,9 +6,11 @@
 
     <div id="shells">
       <div v-for="shell in shells" :key="shell.id" class="shell">
-        <shell @endGame="finishGame(...arguments)" :id="shell.id" :has-perl="shell.id == perlPosition"></shell>
+        <shell @endGame="finishGame(...arguments)" :id="shell.id" :has-perl="shell.id === perlPosition"></shell>
       </div>
     </div>
+
+    <button @click="tryAgain" v-show="this.isEndGame">Try Again</button>
   </div>
 </template>
 
@@ -38,7 +40,6 @@ export default {
   },
   methods: {
     shuffle() {
-      return 0;
       axios.get('https://www.random.org/integers/?num=1&min=0&max=2&col=1&base=10&format=plain&rnd=new')
         .then((response) => {
           this.perlPosition = response.data;
@@ -54,6 +55,10 @@ export default {
 
       this.status = ENDGAME;
       this.endGameStatus = endGameStatus;
+    },
+    tryAgain() {
+      this.status = PLAYING;
+      this.shuffle();
     }
   },
   computed: {
