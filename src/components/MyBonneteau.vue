@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-for="shell in shells" :key="shell.id" id="shells">
+  <div id="shells">
+    <div v-for="shell in shells" :key="shell.id" class="shell">
       <shell :id="shell.id" :has-perl="shell.id == perlPosition"></shell>
     </div>
   </div>
@@ -49,5 +49,9 @@ export default {
 <style scoped>
 #shells {
   width: 100%;
+}
+.shell {
+  width: 33%;
+  display: inline-block;
 }
 </style>

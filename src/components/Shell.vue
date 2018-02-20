@@ -30,9 +30,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .shell-img {
-  width: 33%
+  width: 100%;
 }
 .perl-img {
-  width: 33%;
+  width: 100%;
+}
+.shell-container {
+  display: inline-block;
 }
 </style>
