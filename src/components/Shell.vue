@@ -6,14 +6,12 @@
 </template>
 
 <script>
-
 export default {
   name: 'Shell',
   props: ['id', 'hasPearl'],
   data () {
     return {
-      displayShell: true,
-      displayPearl: false
+      displayShell: true
     };
   },
   methods: {
@@ -21,12 +19,16 @@ export default {
       this.displayShell = false;
 
       if (this.hasPearl) {
-        this.displayPearl = true;
         this.$emit('endGame', 'win');
         return;
       }
 
       this.$emit('endGame', 'lost');
+    }
+  },
+  computed: {
+    displayPearl() {
+      return this.hasPearl && !this.displayShell;
     }
   }
 }
