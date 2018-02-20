@@ -18,10 +18,11 @@ export default {
     select() {
       if (this.hasPerl) {
         this.displayPerl = true;
+        this.$emit('endGame', 'win');
         return;
       }
 
-      console.log('loser');
+      this.$emit('endGame', 'lost');
     }
   }
 }
