@@ -1,7 +1,7 @@
 <template>
   <div>
-    <img @click="select" v-show="!displayPerl" class="shell-img" src="/static/shell.png" alt="">
-    <img v-show="displayPerl" class="pearl-img" src="/static/pearl.jpeg" alt="">
+    <img @click="select" v-show="displayShell && !displayPearl" class="shell-img" src="/static/shell.png" alt="">
+    <img v-show="displayPearl" class="pearl-img" src="/static/pearl.jpeg" alt="">
   </div>
 </template>
 
@@ -12,13 +12,16 @@ export default {
   props: ['id', 'hasPerl'],
   data () {
     return {
-      displayPerl: false
+      displayShell: true,
+      displayPearl: false
     };
   },
   methods: {
     select() {
+      this.displayShell = false;
+
       if (this.hasPerl) {
-        this.displayPerl = true;
+        this.displayPearl = true;
         this.$emit('endGame', 'win');
         return;
       }
