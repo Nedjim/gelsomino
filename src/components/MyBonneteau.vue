@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="shell in shells" :key="shell.id" id="shells">
-      <shell :id="shell.id"></shell>
+      <shell :id="shell.id" :has-perl="shell.id == perlPosition"></shell>
     </div>
   </div>
 </template>
