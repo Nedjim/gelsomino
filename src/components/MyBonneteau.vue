@@ -13,13 +13,7 @@ import Shell from './Shell.vue';
 export default {
   name: 'MyBonneteau',
   mounted() {
-    axios.get('https://www.random.org/integers/?num=1&min=0&max=2&col=1&base=10&format=plain&rnd=new')
-      .then((response) => {
-        this.perlPosition = response.data;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    this.shuffle();
   },
   data() {
     return {
@@ -36,6 +30,17 @@ export default {
         },
       ]
     };
+  },
+  methods: {
+    shuffle() {
+      axios.get('https://www.random.org/integers/?num=1&min=0&max=2&col=1&base=10&format=plain&rnd=new')
+        .then((response) => {
+          this.perlPosition = response.data;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   },
   components: { Shell }
 }
