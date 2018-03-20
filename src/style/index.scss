@@ -1,0 +1,42 @@
+$background: #F5F5F5;
+
+#mon-bonneteau {
+  background: $background;
+  padding: 5rem;
+  h1 {
+    text-align: center
+  }
+  #plateau {
+    position: relative;
+    height: 30vh;
+    text-align: center;
+  }
+}
+
+.shell {
+  position: absolute;
+  top: 8rem;
+  width: 10rem;
+}
+
+.left {
+  .shell, .pearl {
+    left: 30rem;
+  }
+}
+
+.right {
+  .shell, .pearl {
+    right: 20rem;
+  }
+}
+
+.shell.selected {
+  top: 3rem;
+}
+
+.pearl {
+  position: absolute;
+  width: 10rem;
+  top: 10rem;
+}
